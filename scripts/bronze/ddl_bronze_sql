@@ -1,0 +1,30 @@
+/* BRONZE LAYER: RAW DATA INGESTION
+   ---------------------------------------------------------
+   This layer follows a "Schema-on-Read" approach. 
+   The raw JSON data is stored in the 'event_params' column as a string.
+   This preserves the original data integrity before it is flattened, 
+   parsed, and cleaned in the Silver and Gold layers.
+*/
+
+-- Database and Schema Creation
+CREATE DATABASE Datawarehouse;
+GO
+
+CREATE SCHEMA bronze;
+GO
+CREATE SCHEMA silver;
+GO
+CREATE SCHEMA gold;
+GO
+
+-- Bronze Layer: Raw Event Ingestion Table
+IF OBJECT_ID ('bronze.interview_events','U') IS NOT NULL
+    DROP TABLE bronze.interview_events;
+
+CREATE TABLE bronze.interview_events
+(
+    user_id       INT,
+    event_type    VARCHAR(50),
+    event_time    DATETIME2,      -- High-precision timestamp for event sequence
+    event_params  NVARCHAR(MAX)   -- Raw JSON string for flexible parameter parsing
+);
