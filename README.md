@@ -1,5 +1,6 @@
 # sql-statistical-pipeline
 Advanced SQL analytics pipeline for A/B testing on 3M+ records. Features Gold Layer views with Gini Coefficient, Fisher Skewness, Pearson’s Skewness, and Z-Score outlier segmentation.
+
 📖 README Summary (Key Metrics & Layers):
 Project Overview
 This project implements a robust Statistical Analytics Pipeline within a Data Warehouse environment (Medallion Architecture) to evaluate user behavior in A/B experiments.
